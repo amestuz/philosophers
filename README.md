@@ -1,2 +1,2 @@
 # philosophers
-Ecole 42 project
+42 Scholl project
