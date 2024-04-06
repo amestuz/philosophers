@@ -6,7 +6,7 @@
 /*   By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 18:16:23 by uurbizu-          #+#    #+#             */
-/*   Updated: 2024/03/31 21:05:03 by uurbizu-         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:56:54 by uurbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int	ft_check_valid_input(int ac, char **av)
 	while (i < ac)
 	{
 		if (!ft_check_is_int(av[i]))
-			return (FALSE);
+			return (msg(ERR_INPUT_DIGIT, av[i], FALSE));
 		if (i == 1 && ft_atoi(av[i]) > MAX_PHILOS)
-			return (FALSE);
+			return (msg(ERR_INPUT_PH_NUM, MAX_PHILO_STRING, FALSE));
 		i++;
 	}
 	return (TRUE);
