@@ -6,7 +6,7 @@
 /*   By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 18:16:23 by uurbizu-          #+#    #+#             */
-/*   Updated: 2024/04/15 21:09:18 by uurbizu-         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:43:54 by uurbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,8 @@ int	ft_check_valid_input(int ac, char **av)
 	while (i < ac)
 	{
 		if (!ft_check_is_int(av[i]))
-		//	return (msg(ERR_INPUT_DIGIT, av[i], FALSE));
 			return (printf("%s is not a valid unsigned int.\n", av[i]), FALSE);
 		if (i == 1 && ft_atoi(av[i]) > MAX_PHILOS)
-		//	return (msg(ERR_INPUT_PH_NUM, MAX_PHILO_STRING, FALSE));
 			return (printf("there must be between 1 and %d Philos.\n", \
 				MAX_PHILOS), FALSE);
 		i++;

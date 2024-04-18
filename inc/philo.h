@@ -6,7 +6,7 @@
 /*   By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:37:15 by uurbizu-          #+#    #+#             */
-/*   Updated: 2024/04/15 21:09:41 by uurbizu-         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:21:34 by uurbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,16 @@
 
 # define MAX_PHILOS	250
 
-// For error printing;
-
-//# define PROG_NAME 			"Philo :"
-//# define MAX_PHILO_STRING 	"250"
-//# define USAGE				"%s usage: ./philo <num_of_philos> <time_to_die> \
-							<time_to_eat> <time_to_sleep> [num_max_of_meals]\n"
-//# define ERR_INPUT_DIGIT	"%s invalid input: %s is not a valid unsigned \
-							int.\n"
-//# define ERR_INPUT_PH_NUM	"%s invalid input: there must be between 1 and %s \
-							Philos.\n"
-//# define ERR_THREAD			"%s error: could not create thread.\n"
-//# define ERR_MALLOC			"%s error: could not allocate memory.\n"
-//# define ERR_MUTEX			"%s error: could not create mutex.\n"
-
 /******************************************************************************
 *                                 Structures                                  *
 ******************************************************************************/
 
+typedef struct s_philo	t_philo;
+
 typedef struct s_table
 {
 	time_t			start_time;
-	unsigned int	num_ph;
+	int				num_ph;
 	pthread_t		burrial;
 	time_t			time_to_die;
 	time_t			time_to_eat;
@@ -93,13 +81,47 @@ typedef enum e_status
 *                           Function Prototypes                               *
 ******************************************************************************/
 
-//		main.c
-int		main(int ac, char **av);
+//	main.c
+int				main(int ac, char **av);
+int				start_simulation(t_table *table);
+void			stop_simulation(t_table *table);
 
-//		parser.c
-int		ft_check_valid_input(int ac, char **av);
-bool	ft_check_is_int(char *str);
-int		ft_atoi(const char *s1);
-int		ft_isdigit(int c);
+//	parser.c
+int				ft_check_valid_input(int ac, char **av);
+bool			ft_check_is_int(char *str);
+int				ft_atoi(const char *s1);
+int				ft_isdigit(int c);
 
+//	init.c
+t_table			*init_table(int ac, char **av, int i);
+bool			init_global_mutexes(t_table *table);
+t_philo			**init_philosophers(t_table *table);
+void			assign_forks(t_philo *philo);
+pthread_mutex_t	*init_forks(t_table *table);
+
+//	philo.c
+void			*philosopher(void *data);
+void			*lone_philo(t_philo *philo);
+void			think_routine(t_philo *philo, bool silent);
+void			eat_sleep_routine(t_philo *philo);
+
+//	burrial.c
+void			*burrial(void *data);
+bool			end_condition_reached(t_table *table);
+bool			kill_philo(t_philo *philo);
+bool			has_sim_stopped(t_table *table);
+void			set_sim_stop_flag(t_table *table, bool state);
+
+//	time.c
+time_t			get_time_ms(void);
+void			sim_start_delay(time_t start_time);
+void			philo_sleep(t_table *table, time_t sleep_time);
+
+//	output.c
+void			*free_table(t_table *table);
+void			destroy_mutexes(t_table *table);
+void			print_status(t_philo *philo, char *str);
+void			write_status(t_philo *philo, bool reaper_report, \
+													t_status status);
+void			write_outcome(t_table *table);
 #endif
