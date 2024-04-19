@@ -6,7 +6,7 @@
 #    By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 20:26:12 by uurbizu-          #+#    #+#              #
-#    Updated: 2024/03/31 21:05:33 by uurbizu-         ###   ########.fr        #
+#    Updated: 2024/04/19 20:21:47 by uurbizu-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = philo
 
 # Compiler
 CC = cc
-CFLAGS = -Wall  -Wextra -Werror  -g3 #-fsanitize=address
+CFLAGS = -Wall  -Wextra -Werror  -pthread #-fsanitize=address -fsanitize=thread -g 
 MAKE = make
 
 # Directories
