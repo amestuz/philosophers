@@ -6,7 +6,7 @@
 /*   By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:37:15 by uurbizu-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:21:34 by uurbizu-         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:30:56 by uurbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,5 @@ void			destroy_mutexes(t_table *table);
 void			print_status(t_philo *philo, char *str);
 void			write_status(t_philo *philo, bool reaper_report, \
 													t_status status);
-void			write_outcome(t_table *table);
+//void			write_outcome(t_table *table);
 #endif

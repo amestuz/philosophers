@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 17:18:26 by uurbizu-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:33:42 by uurbizu-         ###   ########.fr       */
+/*   Created: 2024/04/14 17:18:26 by uurbizu-          #+#    #+#             */
+/*   Updated: 2024/04/22 19:31:04 by uurbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ pthread_mutex_t	*init_forks(t_table *table)
 	return (forks);
 }
 
+/* even philos are left handed */
 void	assign_forks(t_philo *philo)
 {
 	philo->fork[0] = philo->id;

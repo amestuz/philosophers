@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: uurbizu- <uurbizu-@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 17:40:29 by uurbizu-          #+#    #+#             */
-/*   Updated: 2024/04/18 19:49:41 by uurbizu-         ###   ########.fr       */
+/*   Created: 2024/04/17 17:40:29 by uurbizu-          #+#    #+#             */
+/*   Updated: 2024/04/22 19:33:17 by uurbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,4 @@ void	write_status(t_philo *philo, bool reaper_report, t_status status)
 	else if (status == GOT_FORK_1 || status == GOT_FORK_2)
 		print_status(philo, "has taken a fork");
 	pthread_mutex_unlock(&philo->table->write_lock);
-}
-
-void	write_outcome(t_table *table)
-{
-	int				i;
-	unsigned int	full_count;
-
-	full_count = 0;
-	i = 0;
-	while (i < table->num_ph)
-	{
-		if (table->philos[i]->times_ate >= (unsigned int)table->must_eat_count)
-			full_count++;
-		i++;
-	}
-	pthread_mutex_lock(&table->write_lock);
-	printf("%d/%d philosophers had at least %d meals.\n",
-		full_count, table->num_ph, table->must_eat_count);
-	pthread_mutex_unlock(&table->write_lock);
-	return ;
 }
